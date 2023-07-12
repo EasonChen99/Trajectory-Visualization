@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="path" default = "/home/huai/Documents/data/tracking2d3d/kitti" />
+    <arg name="trail" default = "trail_r10_t2"/>
+
+    <node name="initialization_publisher" pkg="initialization_publisher" type="map_publisher" output="screen">
+        <param name="data_dir" type="string" value="$(arg path)/$(arg trail)"/>
+        <param name="cloud_name" type="string" value="$(arg path)/map-00.ply" />
+        <param name="gt_pose" type="string" value="$(arg path)/poses.csv" />
+        <param name="est_pose" type="string" value="$(arg path)/$(arg trail)/track_seq00.csv" />
+    </node>
+<!--
+    <node pkg="rosbag" type="play" name="player" output="log" 
+    args="/home/tony-ws1/bag/ijrr_euroc_mav_dataset/$(arg sequence_name)/$(arg sequence_name).bag -r 2" />
+-->
+</launch>
